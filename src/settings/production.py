@@ -7,10 +7,10 @@ print("Production Settings")
 
 SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 
-DEBUG = str(os.environ.get('DEBUG'))
-
-MY_URL = os.environ.get('MY_URL')
-ALLOWED_HOSTS = ['localhost',]
+DEBUG = str(os.environ.get('DEBUG', False))
+print(DEBUG)
+MY_URL = str(os.environ.get('MY_URL'))
+ALLOWED_HOSTS = ['localhost', MY_URL]
 
 LOGIN_URL = 'login'
 
@@ -23,13 +23,19 @@ MEDIA_ROOT = BASE_DIR / 'media'
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 2592000
 
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             "hosts": [os.environ.get('REDIS_URL')],
+#         },
+#     },
+# }
+
 CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [os.environ.get('REDIS_URL')],
-        },
-    },
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }
 
 db_from_env = dj_database_url.config()
@@ -39,8 +45,8 @@ DATABASES['default']['CONN_MAX_AGE'] = 500
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ.get('EMAIL_USERNAME')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+EMAIL_HOST_USER = str(os.environ.get('EMAIL_USERNAME'))
+EMAIL_HOST_PASSWORD = str(os.environ.get('EMAIL_PASSWORD'))
 EMAIL_PORT = 587
 
 ADMIN_URL = str(os.environ.get('ADMIN_URL'))
