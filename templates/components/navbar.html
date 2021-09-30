@@ -1,0 +1,131 @@
+<style>
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+</style>
+
+<nav class="bg-white shadow-lg">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between">
+            <div class="flex space-x-7">
+                <div>
+                    <!-- Website Logo -->
+                    <a href="/" class="flex items-center py-4 px-2">
+                        <i class="fas fa-comment"></i>
+                        {#                        <img src="" alt="Logo" class="h-8 w-8 mr-2">#}
+                        <span class="font-semibold text-gray-500 text-lg px-2">Chat</span>
+                    </a>
+                </div>
+                {#                <div class="hidden md:flex items-center space-x-1">#}
+                {##}
+                {#                </div>#}
+            </div>
+
+
+            <div class="hidden md:flex items-center space-x-3 ">
+                {#                <a href="" class="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold ">#}
+                {#                    Home#}
+                {#                </a>#}
+                <a href="{% url 'enter-room' %}"
+                   class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">
+                    Chat
+                </a>
+                <a href=""
+                   class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">
+                    About
+                </a>
+                <a href=""
+                   class="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300">
+                    Contact Us
+                </a>
+                {% if request.user.is_authenticated %}
+                    <div class="dropdown inline-block relative">
+                        <button class="bg-gray-200 text-gray-700 font-semibold py-2 px-4 rounded inline-flex items-center hover:bg-green-500 hover:text-white transition duration-300">
+                            <span class="mr-1">{{ request.user.username.capitalize }}
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                            </svg>
+                        </button>
+                        <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+                            <li class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                                <a href="{% url 'profile' user %}">
+                                    View Profile
+                                </a>
+                            </li>
+                            <li class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                                <a href="{% url 'room_list' %}">
+                                    Room List
+                                </a>
+                            </li>
+                            <li class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
+                                <a href="{% url 'change_password' %}">
+                                    Change Password
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button id="logout"
+                       class="py-2 px-2 font-medium text-white bg-red-500 rounded hover:bg-red-400 transition duration-300">
+                        Sign Out <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                {% else %}
+                    <a href="{% url 'login' %}"
+                       class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300">
+                        Sign In
+                    </a>
+                    <a href="{% url 'register' %}"
+                       class="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300">
+                        Sign Up
+                    </a>
+                {% endif %}
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                <button class="outline-none mobile-menu-button">
+                    <svg class=" w-6 h-6 text-gray-500 hover:text-green-500 "
+                         x-show="!showMenu"
+                         fill="none"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         stroke-width="2"
+                         viewBox="0 0 24 24"
+                         stroke="currentColor"
+                    >
+                        <path d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- mobile menu -->
+    <div class="hidden mobile-menu">
+        <ul class="">
+            <li class="active"><a href="index.html"
+                                  class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li>
+            <li><a href="#services"
+                   class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li>
+            <li><a href="#about" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">About</a>
+            </li>
+            <li><a href="#contact" class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact
+                Us</a></li>
+        </ul>
+    </div>
+    <script>
+        const btn = document.querySelector("button.mobile-menu-button")
+        const menu = document.querySelector(".mobile-menu")
+
+        btn.addEventListener("click", function () {
+            menu.classList.toggle("hidden")
+        })
+        var logout_button = document.getElementById('logout')
+        logout_button.addEventListener('click', function () {
+            var confirm = window.confirm('Are You Sure you want to Logout?')
+            if (confirm) {
+                location.href = '/accounts/logout-user/'
+            }
+        })
+    </script>
+</nav>

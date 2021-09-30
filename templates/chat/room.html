@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="chat-messages">
+        {% for m in messages %}
+                <strong>{{m.user}}</strong>{{m.content}}{{m.timestamp|date:'Y-m-d H:i'}}<br>
+        {% endfor %}
+    </div>
+
+    <input class="input" type="text" placeholder="Message" id="chat-message-input">
+    <button>
+         <a class="button is-info" id="chat-message-submit">Submit</a>
+    </button>
+
+    <small class="has-text-grey-light">Your username: {{ username }}</small>
+
+    {{ room_name|json_script:"json-roomname" }}
+    {{ username|json_script:"json-username" }} 
+
+{% endblock %}

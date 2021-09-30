@@ -1,0 +1,5 @@
+django
+channels
+channels-redis
+django-dotenv
+Pillow
