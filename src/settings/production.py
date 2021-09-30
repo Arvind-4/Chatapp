@@ -51,5 +51,5 @@ EMAIL_HOST_USER = str(os.environ.get('EMAIL_USERNAME'))
 EMAIL_HOST_PASSWORD = str(os.environ.get('EMAIL_PASSWORD'))
 EMAIL_PORT = 587
 
-ADMIN_URL = str(os.environ.get('ADMIN_URL'))
+ADMIN_URL = os.environ.get('ADMIN_URL')
 print('The Admin', ADMIN_URL)
