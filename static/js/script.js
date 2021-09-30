@@ -11,7 +11,7 @@ if (window.location.protocol == 'https:') {
 
 const endpoint = `${start}://${window.location.host}/${start}/${room_name}/`
 console.log(endpoint)
-var chat_socket = new ReconnectingWebSocket(endpoint)
+var chat_socket = new WebSocket(endpoint)
 
 chat_socket.onmessage = function (e) {
     console.log('On Message')
