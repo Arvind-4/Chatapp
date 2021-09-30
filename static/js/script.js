@@ -5,7 +5,7 @@ const req_user_name = JSON.parse(document.getElementById('json-req-username').te
 document.getElementById('chat-message-input').focus()
 
 var start = 'ws'
-if (window.location.protocol == 'https') {
+if (window.location.protocol == 'https:') {
     start = 'wss'
 }
 
