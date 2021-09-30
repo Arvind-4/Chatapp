@@ -12,7 +12,7 @@ DEBUG = False
 
 print(DEBUG)
 MY_URL = str(os.environ.get('MY_URL'))
-ALLOWED_HOSTS = ['localhost', MY_URL]
+ALLOWED_HOSTS = ['localhost', MY_URL, '*']
 
 LOGIN_URL = 'login'
 
