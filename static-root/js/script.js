@@ -4,14 +4,18 @@ const req_user_name = JSON.parse(document.getElementById('json-req-username').te
 
 document.getElementById('chat-message-input').focus()
 
-var start = 'ws'
-if (window.location.protocol == 'https') {
+var start = ''
+if (window.location.protocol == 'https:') {
     start = 'wss'
 }
+else {
+    start = 'ws'
+}
 
+console.log(start)
 const endpoint = `${start}://${window.location.host}/${start}/${room_name}/`
 console.log(endpoint)
-var chat_socket = new ReconnectingWebSocket(endpoint)
+var chat_socket = new WebSocket(endpoint)
 
 chat_socket.onmessage = function (e) {
     console.log('On Message')
