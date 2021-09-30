@@ -1,4 +1,5 @@
 import os
+import dj_database_url
 
 from .base import *
 
@@ -30,6 +31,10 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
