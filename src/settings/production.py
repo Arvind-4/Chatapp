@@ -7,7 +7,7 @@ print("Production Settings")
 
 SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 
-DEBUG = os.environ.get('DEBUG')
+DEBUG = str(os.environ.get('DEBUG'))
 
 MY_URL = os.environ.get('MY_URL')
 ALLOWED_HOSTS = ['localhost',]
