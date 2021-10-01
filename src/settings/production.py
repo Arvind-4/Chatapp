@@ -10,7 +10,7 @@ path = BASE_DIR / '.env'
 dotenv.read_dotenv(path)
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = False
 
 MY_URL = os.environ.get('MY_URL')
 ALLOWED_HOSTS = ['localhost']
