@@ -1,18 +1,20 @@
 import os
 import dj_database_url
+import dotenv
 
 from .base import *
 
 print("Production Settings")
 
-SECRET_KEY = str(os.environ.get('SECRET_KEY'))
+path = BASE_DIR / '.env'
+dotenv.read_dotenv(path)
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-# DEBUG = str(os.environ.get('DEBUG', False))
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', False)
 
-print(DEBUG)
-MY_URL = str(os.environ.get('MY_URL'))
-ALLOWED_HOSTS = ['localhost', MY_URL, '*']
+MY_URL = os.environ.get('MY_URL')
+ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS.append(MY_URL)
 
 LOGIN_URL = 'login'
 
@@ -47,8 +49,8 @@ DATABASES['default']['CONN_MAX_AGE'] = 500
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = str(os.environ.get('EMAIL_USERNAME'))
-EMAIL_HOST_PASSWORD = str(os.environ.get('EMAIL_PASSWORD'))
+EMAIL_HOST_USER = os.environ.get('EMAIL_USERNAME')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
 EMAIL_PORT = 587
 
 ADMIN_URL = os.environ.get('ADMIN_URL')

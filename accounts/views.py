@@ -83,12 +83,15 @@ class ProfileView(LoginRequiredMixin, View):
         instance = User.objects.filter(username=user)
         if not instance:
             return redirect('/error/')
+        obj = Profile.objects.filter(user__username=user)
+        if not obj.exists():
+            created = Profile.objects.create(user=
+                User.objects.get(username=user)
+            )
+        if request.user.username == user:
+            is_user = True
         else:
-            obj = Profile.objects.get_or_create(user=user)
-            if request.user.username == user:
-                is_user = True
-            else:
-                is_user = False
+            is_user = False
         context = {
             'user_context': instance.first(),
             'is_user': is_user,
