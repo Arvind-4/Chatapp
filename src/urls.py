@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import (
+    handler404
+)
 
 admin_url = settings.ADMIN_URL
 
@@ -26,6 +29,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('', include('pages.urls')),
 ]
+
+handler404 = 'pages.views.error_view'
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
