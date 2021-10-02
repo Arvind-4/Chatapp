@@ -11,8 +11,6 @@ dotenv.read_dotenv(path)
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
-REDIS_URL = os.environ.get('REDIS_URL')
-
 DEBUG = False
 
 MY_URL = os.environ.get('MY_URL')
@@ -29,15 +27,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 2592000
-
-# CHANNEL_LAYERS = {
-#     'default': {
-#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
-#         'CONFIG': {
-#             "hosts": [os.environ.get('REDIS_URL')],
-#         },
-#     },
-# }
 
 CHANNEL_LAYERS = {
     "default": {
@@ -58,3 +47,9 @@ EMAIL_PORT = 587
 
 ADMIN_URL = os.environ.get('ADMIN_URL')
 print('The Admin', ADMIN_URL)
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
