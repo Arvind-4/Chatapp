@@ -64,7 +64,7 @@ def room(request, room_name):
         'messages': qs,
         'room_list': qs_chat,
     }
-    return render(request, 'chat/room_new.html', context=context)
+    return render(request, 'chat/room.html', context=context)
 
 
 @login_required()
