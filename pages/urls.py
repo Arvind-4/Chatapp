@@ -1,11 +1,16 @@
 from django.urls import path
+from django.conf.urls import (
+    handler404
+)
 
 from .views import (
-    ErrorView,
+    error_view,
     HomeView,
 )
 
 urlpatterns = (
-    path('error/', ErrorView.as_view()),
+    path('error/', error_view),
     path('', HomeView.as_view()),
 )
+
+handler404 = 'error_view'
