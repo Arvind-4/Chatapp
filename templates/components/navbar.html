@@ -17,7 +17,6 @@
         <div class="flex justify-between">
             <div class="flex space-x-7">
                 <div>
-                    <!-- Website Logo -->
                     <a href="/" class="flex items-center py-4 px-2">
                         <i class="fas fa-comment"></i>
                         <span class="font-semibold text-gray-500 text-lg px-2">Chat</span>
@@ -68,11 +67,6 @@
                                 Room List
                             </a>
                         </li>
-                        <!-- <li class="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap">
-                            <a href="{% url 'change_password' %}">
-                                Change Password
-                            </a>
-                        </li> -->
                     </ul>
                 </div>
                 <button id="logout"
@@ -91,7 +85,6 @@
                 {% endif %}
             </div>
 
-            <!-- Mobile menu button -->
             <div class="md:hidden flex items-center">
                 <button class="outline-none mobile-menu-button">
                     <svg class=" w-6 h-6 text-gray-500 hover:text-green-500 " x-show="!showMenu" fill="none"
@@ -103,48 +96,42 @@
             </div>
         </div>
     </div>
-    <!-- mobile menu -->
 
     <div class="hidden mobile-menu">
-        <ul class="">
-            <!-- <li><a href="/" class="block text-sm px-2 py-4 text-white bg-green-500 font-semibold">Home</a></li> -->
-            <!-- <li><a href="#services"
-                    class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Services</a></li> -->
-            <li><a href="{% url 'home' %}"
-                    class="{% if request.path == home_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Home</a>
-            </li>
-            <li><a href="{% url 'enter-room' %}"
-                    class="{% if request.path == enter_room_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Chat</a>
-            </li>
-            <li><a href="{% url 'about' %}"
-                    class="{% if request.path == about_us_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">About</a>
-            </li>
-            <li><a href="{% url 'contact-us' %}"
-                    class="{% if request.path == contact_us_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Contact
-                    Us</a>
-            </li>
-            {% if not request.user.is_authenticated %}
-            <li><a href="{% url 'login' %}"
-                    class="{% if request.path == login_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block bg-green-200 text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Sign
-                    In</a>
-            </li>
-            <li><a href="{% url 'register' %}"
-                    class="{% if request.path == register_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block bg-green-200 text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Sign
-                    Up</a>
-            </li>
-            {% else %}
-            <li>
-                <a onclick="alert_function()" id='logout-mobile-button'
-                    class="{% if request.path == register_url %}block text-sm px-2 py-4 text-white bg-red-500 font-semibold {% else %}block bg-red-400 text-sm px-2 py-4 hover:bg-red-500 transition duration-300 {% endif %}">Sign
-                    Out</a>
+        <center>
+            <ul>
+                <li><a href="{% url 'home' %}"
+                        class="{% if request.path == home_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Home</a>
+                </li>
+                <li><a href="{% url 'enter-room' %}"
+                        class="{% if request.path == enter_room_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Chat</a>
+                </li>
+                <li><a href="{% url 'about' %}"
+                        class="{% if request.path == about_us_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">About</a>
+                </li>
+                <li><a href="{% url 'contact-us' %}"
+                        class="{% if request.path == contact_us_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Contact
+                        Us</a>
+                </li>
+                {% if not request.user.is_authenticated %}
+                <li><a href="{% url 'login' %}"
+                        class="{% if request.path == login_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block bg-green-200 text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Sign
+                        In</a>
+                </li>
+                <li><a href="{% url 'register' %}"
+                        class="{% if request.path == register_url %}block text-sm px-2 py-4 text-white bg-green-500 font-semibold {% else %}block bg-green-200 text-sm px-2 py-4 hover:bg-green-500 transition duration-300 {% endif %}">Sign
+                        Up</a>
+                </li>
+                {% else %}
+                <li>
+                    <a onclick="alert_function()" id='logout-mobile-button'
+                        class="{% if request.path == register_url %}block text-sm px-2 py-4 text-white bg-red-500 font-semibold {% else %}block bg-red-400 text-sm px-2 py-4 hover:bg-red-500 transition duration-300 {% endif %}">Sign
+                        Out</a>
 
-            </li>
-            {% endif %}
-
-            <!-- <li><a href="#contact"
-                    class="block text-sm px-2 py-4 hover:bg-green-500 transition duration-300">Contact Us</a>
-            </li> -->
-        </ul>
+                </li>
+                {% endif %}
+            </ul>
+        </center>
     </div>
 
     <script>
