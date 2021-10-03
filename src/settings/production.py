@@ -48,7 +48,7 @@ EMAIL_PORT = 587
 ADMIN_URL = os.environ.get('ADMIN_URL')
 print('The Admin', ADMIN_URL)
 
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 SESSION_COOKIE_SECURE = True
 
