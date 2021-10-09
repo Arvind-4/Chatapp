@@ -1,5 +1,5 @@
 
-# # Chatapp
+# Chatapp
 
 Here's a list of the packages we will use to accomplish this:
 Start Chatting on  [open-chatapp](https://open-chatapp.herokuapp.com/) .
