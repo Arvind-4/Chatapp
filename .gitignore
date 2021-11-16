@@ -8,6 +8,8 @@ share/
 # cache files
 
 */__pycache__
+*/api/__pycache__
+*/migrations/__pycache__
 */settings/__pycache__
 
 # virtualenv files
