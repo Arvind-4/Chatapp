@@ -1,6 +1,14 @@
-.env
+*.env
 media/
+run.sh
 ru.sh
+superuser.sh
+share/
+
+# cache files
+
+*/__pycache__
+*/settings/__pycache__
 
 # virtualenv files
 

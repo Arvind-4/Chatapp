@@ -57,3 +57,15 @@ CSRF_COOKIE_SECURE = True
 SECURE_SSL_REDIRECT = True
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+
+# add to production 
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+COMPRESS_ENABLED = os.environ.get('COMPRESS_ENABLED', False)
+COMPRESS_ROOT = STATIC_ROOT
+COMPRESS_URL = STATIC_URL
