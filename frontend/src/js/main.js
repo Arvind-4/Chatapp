@@ -1,8 +1,11 @@
+import ReconnectingWebSocket from 'reconnecting-websocket';
+
 const room_name = JSON.parse(document.getElementById('json-roomname').textContent);
 const user_name = JSON.parse(document.getElementById('json-username').textContent);
 const req_user_name = JSON.parse(document.getElementById('json-req-username').textContent);
 
 document.getElementById('chat-message-input').focus()
+
 
 var start = ''
 if (window.location.protocol === 'https:') {
@@ -16,6 +19,7 @@ console.log(start)
 const endpoint = `${start}://${window.location.host}/${start}/${room_name}/`
 console.log(endpoint)
 var chat_socket = new ReconnectingWebSocket(endpoint)
+console.log('Loaded')
 
 chat_socket.onmessage = function (e) {
     console.log('On Message')
