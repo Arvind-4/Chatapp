@@ -1,12 +1,9 @@
 import os
-import dj_database_url
 
 from .base import *
 
 print("Production Settings")
 
-# if not 'HEROKU' in os.environ:
-#     pass
 
 # Basic Settings
 
@@ -56,57 +53,44 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Security Settings
 
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# SECURE_SSL_REDIRECT = True
-# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-# SESSION_COOKIE_AGE = 2592000
-# SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 2592000
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Database Settings
 
-# DATABASE_NAME = str(os.environ.get('DATABASE_NAME'))
-# DATABASE_USER = str(os.environ.get('DATABASE_USER'))
-# DATABASE_PASSWORD = str(os.environ.get('DATABASE_PASSWORD'))
-# DATABASE_HOST = str(os.environ.get('DATABASE_HOST'))
-# DATABASE_PORT = int(os.environ.get('DATABASE_PORT'))
-# DATABASE_SSL_CA = str(os.environ.get('DATABASE_SSL_CA'))
+PG_DATABASE_NAME = str(os.environ.get('PG_DATABASE_NAME'))
+PG_DATABASE_USER = str(os.environ.get('PG_DATABASE_USER'))
+PG_DATABASE_PASSWORD = str(os.environ.get('PG_DATABASE_PASSWORD'))
+PG_DATABASE_HOST = str(os.environ.get('PG_DATABASE_HOST'))
+PG_DATABASE_PORT = int(os.environ.get('PG_DATABASE_PORT'))
 
-# DB_IS_AVAILABLE = all([
-#     DATABASE_NAME,
-#     DATABASE_USER,
-#     DATABASE_PASSWORD,
-#     DATABASE_HOST,
-#     DATABASE_PORT,
-#     DATABASE_SSL_CA
-# ])
+DB_IS_AVAILABLE = all([
+    PG_DATABASE_NAME,
+    PG_DATABASE_USER,
+    PG_DATABASE_PASSWORD,
+    PG_DATABASE_HOST,
+    PG_DATABASE_PORT
+])
 
-# if DB_IS_AVAILABLE:
-#     DATABASES = {
-#   'default': {
-#     'ENGINE': 'django.db.backends.mysql',
-#     'NAME': DATABASE_NAME,
-#     'HOST': DATABASE_HOST,
-#     'PORT': DATABASE_PORT,
-#     'USER': DATABASE_USER,
-#     'PASSWORD': DATABASE_PASSWORD,
-#     'OPTIONS': {
-#         'ssl': {
-#             'ca': DATABASE_SSL_CA
-#             }
-#         }
-#     }
-# }
+if DB_IS_AVAILABLE:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': PG_DATABASE_NAME,
+            'HOST': PG_DATABASE_HOST,
+            'PORT': PG_DATABASE_PORT,
+            'USER': PG_DATABASE_USER,
+            'PASSWORD': PG_DATABASE_PASSWORD,
+        }
+    }
 
-#     DATABASES['default']['CONN_MAX_AGE'] = 500
-#     DATABASES['default']['ATOMIC_REQUESTS'] = True
-DATABASES = {}
-
-db_from_env = dj_database_url.config()
-DATABASES['default'].update(db_from_env)
-DATABASES['default']['CONN_MAX_AGE'] = 500
-DATABASES['default']['ATOMIC_REQUESTS'] = True
+    DATABASES['default']['CONN_MAX_AGE'] = 500
+    DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 # Redis Settings
 
