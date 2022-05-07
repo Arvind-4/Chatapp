@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ request.user.username.capitalize }} {% endblock %}
+
+{% block content %}
+
+    <div class="h-screen bg-gray-200 dark:bg-gray-800 flex flex-wrap items-center justify-center">
+        <div class="container lg:w-2/6 xl:w-2/7 sm:w-full md:w-2/3 bg-white shadow-lg transform duration-200 easy-in-out">
+            <div class="h-32 overflow-hidden">
+                {% if user_context.profile.user_banner %}
+                    <img class="w-full" src="{{ user_context.profile.user_banner.url }}">
+                {% else %}
+                    <img class="w-full" src="{% static 'img/default_user_banner.jpg' %}">
+                {% endif %}
+            </div>
+            <div class="flex justify-center px-5 -mt-12">
+                {% if user_context.profile.user_image %}
+                    <img class="h-32 w-32 p-2 rounded-full" src="{{ user_context.profile.user_image.url }}">
+                {% else %}
+                    <img class="h-32 w-32 p-2 rounded-full" src="{% static '/img/default_user_image.jpg' %}">
+                {% endif %}
+            </div>
+            <div class="">
+                <div class="text-center px-14">
+                    <h2 class="text-gray-800 text-3xl font-bold">{{ user_context }}</h2>
+                    {# <p class="text-gray-400 mt-2">@immohitdhiman</p>#}
+                    <p class="mt-2 text-gray-900">{{ user_context.profile.bio }}</p>
+                </div>
+                <div class="text-center px-5">
+                    <br>
+                    {% if user_context.profile.instagram_url %}
+                        <a href="{{ user_context.profile.instagram_url }}" class="p-2" target="_blank">
+                            <i class="fab fa-instagram fa-2x"></i>
+                        </a>
+                    {% elif user_context.profile.linkedin_url %}
+                        <a href="{{ user_context.profile.linkedin_url }}" class="p-2" target="_blank">
+                            <i class="fab fa-linkedin-in fa-2x"></i>
+                        </a>
+                    {% elif user_context.profile.github_url %}
+                        <a href="{{ user_context.profile.github_url }}" class="p-2" target="_blank">
+                            <i class="fab fa-github fa-2x"></i>
+                        </a>
+                    {% endif %}
+                </div>
+
+                {% if is_user %}
+
+                    <hr class="mt-6"/>
+                    <div class="flex  bg-gray-50 ">
+                        <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
+                            <a href="{% url 'profile_edit' %}">
+                                <p><span class="font-semibold">
+                                <i class="fas fa-user-cog"></i>
+                            </span></p>
+                            </a>
+                        </div>
+                        <div class="border"></div>
+                        <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
+                            <a href="{% url 'change_password' %}">
+                                <p><span class="font-semibold">
+                                <i class="fas fa-user-edit"></i>
+                            </span></p>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
