@@ -4,7 +4,6 @@ from .base import *
 
 print("Production Settings")
 
-
 # Basic Settings
 
 SECRET_KEY = str(os.environ.get('DJANGO_SECRET_KEY'))
