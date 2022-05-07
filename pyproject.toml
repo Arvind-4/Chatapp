@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "chatapp"
+version = "0.1.0"
+description = ""
+authors = ["Arvind-4 <lordarvindthegamer@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Django = "3.2.7"
+channels = "3.0.4"
+django-dotenv = "^1.4.2"
+Pillow = "^9.1.0"
+whitenoise = "^6.0.0"
+dj-database-url = "^0.5.0"
+channels-redis = "^3.4.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
