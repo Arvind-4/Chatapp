@@ -1,1 +1,1 @@
-web: daphne src.asgi:application --port $PORT --bind 0.0.0.0
+web: sh -c 'cd web && daphne backend.asgi:application --port $PORT --bind 0.0.0.0'
