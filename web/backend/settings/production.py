@@ -93,7 +93,7 @@ if DB_IS_AVAILABLE:
 
 REDIS_USER = str(os.environ.get('REDIS_USER'))
 REDIS_PASSWORD = str(os.environ.get('REDIS_PASSWORD'))
-REDIS_PORT = int(os.environ.get('REDIS_PORT'))
+REDIS_PORT = str(os.environ.get('REDIS_PORT'))
 REDIS_HOST = str(os.environ.get('REDIS_HOST'))
 
 REDIS_URL = f'redis://{REDIS_USER}:{REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}'
