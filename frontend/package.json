@@ -16,7 +16,8 @@
     "rename-css": "renamer --regex --find 'index\\.[^\\.]+\\.css' --replace 'index.min.css' ./dist/assets/*.css",
     "copy-css": "copyfiles -f './dist/assets/*.css' ../web/static/css",
     "copy-js": "copyfiles -f './dist/assets/*.js' ../web/static/js",
-    "production": "npm run remove-cache:pre && npm run make-dirs && npm run build && npm run build:tailwind && npm run rename-js && npm run rename-css && npm run copy-js && npm run copy-css && npm run remove-cache:post"
+    "production": "npm run remove-cache:pre && npm run make-dirs && npm run build && npm run build:tailwind && npm run rename-js && npm run rename-css && npm run copy-js && npm run copy-css && npm run remove-cache:post",
+    "collect": "rm -rf ../web/staticfiles && npm run production && python ../web/manage.py collectstatic --noinput"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.1.3",
