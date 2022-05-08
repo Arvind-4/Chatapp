@@ -8,7 +8,6 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/asgi/
 """
 
 import os
-import django
 import dotenv
 import pathlib
 
@@ -16,23 +15,30 @@ CURRENT_DIR = pathlib.Path(__file__).resolve().parent
 BASE_DIR = CURRENT_DIR.parent
 ENV_FILE_PATH = BASE_DIR / ".env"
 
-dotenv.read_dotenv(str(ENV_FILE_PATH))
+if ENV_FILE_PATH.exists():
+    dotenv.read_dotenv(str(ENV_FILE_PATH))
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
+os.environ['DJANGO_SETTINGS_MODULE'] =  'backend.settings'
+
+import django
 django.setup()
 
 from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
-
+from channels.security.websocket import AllowedHostsOriginValidator
 from django.core.asgi import get_asgi_application
 
 from chat.routing import websockets_urlpatterns
 
+django_app = get_asgi_application()
+
 application = ProtocolTypeRouter({
-    "http": get_asgi_application(),
-    "websocket": AuthMiddlewareStack(
-        URLRouter(
-            websockets_urlpatterns
+    "http": django_app,
+    "websocket": AllowedHostsOriginValidator(
+        AuthMiddlewareStack(
+            URLRouter(
+                websockets_urlpatterns
+            )
         )
     )
 })
