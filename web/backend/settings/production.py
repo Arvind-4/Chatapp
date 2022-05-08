@@ -6,12 +6,10 @@ print("Production Settings")
 
 # Basic Settings
 
+ASGI_APPLICATION = 'backend.asgi.application'
 SECRET_KEY = str(os.environ.get('DJANGO_SECRET_KEY'))
-
 ADMIN_URL = str(os.environ.get('DJANGO_ADMIN_URL'))
-
 DEBUG = bool(int(os.environ.get('DJANGO_DEBUG')))
-
 ALLOWED_HOSTS = []
 
 ALLOWED_HOSTS.extend(
@@ -50,13 +48,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Security Settings
 
-# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
-# SECURE_SSL_REDIRECT = True
-# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-# SESSION_COOKIE_AGE = 2592000
-# SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 2592000
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 # Database Settings
 
@@ -93,16 +91,16 @@ if DB_IS_AVAILABLE:
 
 REDIS_USER = str(os.environ.get('REDIS_USER'))
 REDIS_PASSWORD = str(os.environ.get('REDIS_PASSWORD'))
-REDIS_PORT = str(os.environ.get('REDIS_PORT'))
+REDIS_PORT = int(os.environ.get('REDIS_PORT'))
 REDIS_HOST = str(os.environ.get('REDIS_HOST'))
 
-REDIS_URL = f'redis://{REDIS_USER}:{REDIS_PASSWORD}@${REDIS_HOST}:${REDIS_PORT}'
+REDIS_URL = f'redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}'
 
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [REDIS_URL],
+            "hosts": [str(REDIS_URL)],
         },
     },
 }
