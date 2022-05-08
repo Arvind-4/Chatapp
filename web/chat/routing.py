@@ -1,11 +1,16 @@
-from django.urls import path
-from .consumers import ChatConsumer
 from django.conf import settings
+from django.conf.urls import url
+
+from .consumers import ChatConsumer
 
 websockets_urlpatterns = []
 
 if settings.DEBUG:
-    websockets_urlpatterns += [path('ws/<str:room_name>/', ChatConsumer.as_asgi())]
+    websockets_urlpatterns += [
+        url(r"^ws/(?P<room_name>[^/]+)/$", ChatConsumer.as_asgi()), 
+    ]
 
 else:
-    websockets_urlpatterns += [path('wss/<str:room_name>/', ChatConsumer.as_asgi())]
+    websockets_urlpatterns += [
+        url(r"^wss/(?P<room_name>[^/]+)/$", ChatConsumer.as_asgi()), 
+    ]
