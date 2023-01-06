@@ -1,11 +1,13 @@
-from django.conf import settings
+from decouple import config
 from django.conf.urls import url
 
 from .consumers import ChatConsumer
 
+DJANGO_LIVE = config('DJANGO_LIVE', cast=bool)
+
 websockets_urlpatterns = []
 
-if settings.DEBUG:
+if not DJANGO_LIVE:
     websockets_urlpatterns += [
         url(r"^ws/(?P<room_name>[^/]+)/$", ChatConsumer.as_asgi()), 
     ]
