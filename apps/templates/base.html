@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Chat | {% block title %}{% endblock %}</title>
+
+    <link rel="shortcut icon" type="image/jpg" href="{% static 'favicon/favicon.jpg' %}"/>
+    {% include 'css/css.html' %}
+</head>
+<body>
+    {% include 'components/navbar.html' %}
+    {% block content %}
+    {% endblock %}
+    {% include 'js/js.html' %}
+</body>
+</html>

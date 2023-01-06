@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %} Sign Up {% endblock %}
+
+{% block content %}
+
+        <section class="min-h-screen flex flex-col">
+        <div class="flex flex-1 items-center justify-center">
+            <div class="rounded-lg sm:border-2 px-4 lg:px-24 py-16 lg:max-w-xl sm:max-w-md w-full text-center">
+                <form class="text-center" method="POST">
+                    {% csrf_token %}
+                    <h1 class="font-bold tracking-wider text-3xl mb-8 w-full text-gray-600">
+                        Register Here!
+                    </h1>
+                    <div class="py-2 text-left">
+                        {% for field in form %}
+                            {{ field }}<br>
+                            {% if field.errors %}
+                                {% for err in field.errors %}
+                                    <center>
+                                        <strong>
+                                            <p class="text-red-800" style="padding: 10px;">{{ err }}</p>
+                                        </strong>
+                                    </center>
+                                {% endfor %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="text-center">
+                        <label class="inline-flex items-center mt-3">
+                            <input type="checkbox" id="show-register" onclick="password_open()"
+                                   class="form-checkbox h-4 w-4 text-gray-600">
+                            <span class="ml-2 text-gray-700">Show Password</span>
+                        </label>
+                    </div>
+                    <div class="py-2">
+                        <button type="submit"
+                                class="border-2 border-gray-100 focus:outline-none bg-purple-600 text-white font-bold tracking-wider block w-full p-2 rounded-lg focus:border-gray-700 hover:bg-purple-700">
+                            Register
+                        </button>
+                    </div>
+                </form>
+{#                <div class="text-center">#}
+{#                    <a href="{% url 'password_reset' %}" class="hover:underline">Forgot password?</a>#}
+{#                </div>#}
+                <div class="text-center mt-12">
+                    <span>
+                        Already have an Account?
+                    </span>
+                    <a href="{% url 'login' %}"
+                       class="font-light text-md text-indigo-600 underline font-semibold hover:text-indigo-800">
+                        Sign In Here!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<script>
+
+    document.getElementById('id_username').focus()
+    var password1 = document.getElementById('id_password1')
+    var password2 = document.getElementById('id_password2')
+    var check_box_register = document.getElementById('show-register')
+
+    function password_open() {
+        if (check_box_register.checked) {
+            password1.type = 'text'
+            password2.type = 'text'
+        }
+        else {
+            password1.type = 'password'
+            password2.type = 'password'
+        }
+    }
+
+</script>
+
+
+
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %} About Us {% endblock %}
+
+{% block content %}
+
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 h-screen">
+            <div class="max-h-96 md:h-screen">
+                <img class="w-screen h-screen object-cover object-top"
+                     src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            </div>
+            <div class="flex bg-gray-100 p-10">
+                <div class="mb-auto mt-auto max-w-lg">
+                    <a href="http://arvind11.ml" target="_blank">
+                        <h1 class="text-3xl uppercase">Arvind</h1>
+                    </a>
+                    <a href="http://arvind11.ml" target="_blank">
+                        <p class="font-semibold mb-5">Web Developer</p>
+                    </a>
+                    <p>I am a ECE Student from SRM with a strong interest in Problem-Solving and Software Development. I
+                        enjoy learning about new technologies. My goal is not only to adopt it and evolve with it but
+                        also contribute to the awesome changes that technology brings to our life! that's why I
+                        Code!</p>
+                    <a href="mailto:lordarvindthegamer@gmail.com">
+                        <button class="bg-black rounded-md py-3 px-7 mt-6 text-white">Say Hello!</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

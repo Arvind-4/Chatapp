@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} List  {% endblock %}
+
+{% block content %}
+
+    <div class="container mx-auto py-2 flex h-screen justify-center items-center">
+        <div>
+            {% if room_list %}
+                <table class="min-w-full table-auto">
+                    <thead class="justify-between">
+                    <tr class="bg-gray-800">
+                        <th class="px-16 py-2">
+                            <span class="text-gray-300">#</span>
+                        </th>
+                        <th class="px-16 py-2">
+                            <span class="text-gray-300">Image</span>
+                        </th>
+                        <th class="px-16 py-2">
+                            <span class="text-gray-300">Chat</span>
+                        </th>
+                        <th class="px-16 py-2">
+                            <span class="text-gray-300"><i class="fas fa-eye"></i></span>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-gray-200">
+
+                    {% for r in room_list %}
+                        <tr class="bg-white border-4 border-gray-200">
+
+                            <td class="px-16 py-2">
+                                      <span class="text-green-500">{{ forloop.counter }}
+                                      </span>
+                            </td>
+                            <td class="px-16 py-2 flex flex-row items-center">
+                                <img class="h-8 w-8 rounded-full object-cover"
+                                     src="{% static 'img/default_group_image.png' %}">
+                            </td>
+                            <td class="px-16 py-2">
+                                      <span class="text-green-500">{{ r.name }}
+                                      </span>
+                            </td>
+                            <td class="px-16 py-2">
+                                <a href="{{ r.chat_room_url }}">
+                                    <button class="bg-gray-700 text-white px-4 py-2 border rounded-md hover:bg-grey-900 hover:border-indigo-500 hover:text-red">
+                                        Chat <i class="fas fa-comment"></i>
+                                    </button>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="h-screen flex items-center justify-center">
+                    <div class="mx-2 text-center">
+                        <h1 class="text-gray-900 font-extrabold text-4xl xs:text-5xl md:text-6xl p-4">
+                            Empty!
+                        </h1>
+                        <h2 class="text-dark font-extrabold text-3xl xs:text-4xl md:text-5xl leading-tight p-4">
+                            Join Room and Start Chatting!
+                        </h2>
+                        <div class="inline-flex">
+                            <a href="{% url 'enter-room' %}">
+                                <button class="p-2 my-5 mx-2 bg-indigo-700 hover:bg-indigo-800 font-bold text-white rounded border-2 border-transparent hover:border-indigo-800 shadow-md transition duration-500 md:text-xl">
+                                    Join Now!
+                                </button>
+                            </a>
+                            <a href="/">
+                                <button class="p-2 my-5 mx-2 bg-transparent border-2 bg-indigo-200 bg-opacity-75 hover:bg-opacity-100 border-indigo-700 rounded hover:border-indigo-800 font-bold text-indigo-800 shadow-md transition duration-500 md:text-lg">
+                                    Return Home
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

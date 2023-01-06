@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Edit Profile {% endblock %}
+
+{% block content %}
+
+    <div class="bg-green-200 py-32 px-10 min-h-screen ">
+        <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto">
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                {% for field in form %}
+                    <div class="flex items-center mb-5">
+                        <label class="inline-block w-20 mr-6 text-right font-bold text-gray-600">
+                            {{ field.label }}
+                        </label>
+                        {{ field }}<br/>
+                        {% if field.errors %}
+                            {% for err in field.errors %}
+                                <center>
+                                    <strong>
+                                        <p class="text-red-800" style="padding: 10px;">{{ err }}</p>
+                                    </strong>
+                                </center>
+                            {% endfor %}
+                        {% endif %}
+                        {% if field.label == 'Profile Image' %}
+                            {% if user.profile.user_image %}
+                                <img id='output' src="{{ user.profile.user_image.url }}" height="75" width="75">
+                            {% else %}
+                                <img id='output' src="{% static 'img/default_user_image.jpg' %}" height="75"
+                                     width="75">
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    {% if field.label == 'Banner Image' %}
+                        <center>
+                            {% if user.profile.user_image %}
+                                <img class="mt-4 mb-4 rounded-2xl border border-gray-100 dark:border-gray-700"
+                                     src="{{ user.profile.user_banner.url }}" id="output-banner"/>
+                            {% else %}
+                                <img class="mt-4 mb-4 rounded-2xl border border-gray-100 dark:border-gray-700"
+                                     id='output-banner' src="{% static 'img/default_user_banner.jpg' %}">
+                            {% endif %}
+                        </center>
+                    {% endif %}
+                {% endfor %}
+                <div class="text-right">
+                    <button class="py-3 px-8 bg-green-400 text-white font-bold" type="submit">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var loadFile = function (event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src)
+            }
+        }
+        var loadFile_banner = function (event) {
+            var output_banner = document.getElementById('output-banner');
+            output_banner.src = URL.createObjectURL(event.target.files[0]);
+            output_banner.onload = function () {
+                URL.revokeObjectURL(output_banner.src)
+            }
+        }
+    </script>
+
+{% endblock %}
