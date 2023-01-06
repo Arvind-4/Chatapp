@@ -1,8 +1,10 @@
 from decouple import config
 
-DJANGO_LIVE = config('DJANGO_LIVE', default=False, cast=bool)
+DJANGO_LIVE = config('DJANGO_LIVE', cast=bool)
 
-if DJANGO_LIVE:
+if not DJANGO_LIVE:
+    print("Loading Local settings")
     from .local import *
 else:
+    print("Loading Production settings")
     from .production import *

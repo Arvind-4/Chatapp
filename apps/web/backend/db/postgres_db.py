@@ -18,15 +18,12 @@ DB_IS_AVAILABLE = all([
 if DB_IS_AVAILABLE:
     DATABASES = {
         'default': {
-            'ENGINE': 'django_cockroachdb',
+            'ENGINE': 'django.db.backends.postgresql',
             'NAME': DJANGO_PG_DATABASE,
             'USER': DJANGO_PG_USER,
             'PASSWORD': DJANGO_PG_PASSWORD,
             'HOST': DJANGO_PG_HOST,
             'PORT': DJANGO_PG_PORT,
-            'OPTIONS': {
-                'sslmode': 'verify-full',
-            },
         },
     }
 
