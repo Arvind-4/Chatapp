@@ -6,7 +6,7 @@ authors = ["Arvind-4 <lordarvindthegamer@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Django = "3.2.7"
+Django = ">3.2,<3.3"
 channels = "3.0.4"
 Pillow = "^9.1.0"
 whitenoise = "^6.0.0"

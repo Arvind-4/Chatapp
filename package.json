@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Start Chatting on  [open-chatapp](https://open-chatapp.herokuapp.com/) .",
   "scripts": {
-    "i": "npm install --prefix=apps/chatjs",
+    "i": "npm install && npm install --prefix=apps/chatjs",
     "production": "npm run production --prefix=apps/chatjs"
   },
   "repository": {
