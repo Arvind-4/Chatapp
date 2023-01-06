@@ -1,0 +1,26 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "Start Chatting on  [open-chatapp](https://open-chatapp.herokuapp.com/) .",
+  "scripts": {
+    "i": "npm install --prefix=apps/chatjs",
+    "production": "npm run production --prefix=apps/chatjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arvind-4/Chatapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arvind-4/Chatapp/issues"
+  },
+  "homepage": "https://github.com/Arvind-4/Chatapp#readme",
+  "devDependencies": {
+    "copyfiles": "^2.0.0",
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5",
+    "renamer": "^0.7.0",
+    "rimraf": "^3.0.2"
+  }
+}
