@@ -10,9 +10,11 @@ Django = ">3.2,<3.3"
 channels = "3.0.4"
 Pillow = "^9.1.0"
 whitenoise = "^6.0.0"
-channels-redis = "^3.4.0"
+channels-redis = "3.4.0"
 psycopg2-binary = "^2.9.3"
 python-decouple = "^3.6"
+redis = "^4.4.0"
+asyncio = "^3.4.3"
 
 [tool.poetry.dev-dependencies]
 
