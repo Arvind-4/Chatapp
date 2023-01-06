@@ -14,3 +14,5 @@ else:
     websockets_urlpatterns += [
         re_path(r'^wss/(?P<room_name>[^/]+)/', ChatConsumer.as_asgi()), 
     ]
+
+print("Websockets URL Patterns: ", websockets_urlpatterns)
