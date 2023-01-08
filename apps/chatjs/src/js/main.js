@@ -8,7 +8,7 @@ document.getElementById('chat-message-input').focus()
 
 var start = 'ws'
 if (window.location.protocol == 'https:') {
-    start = 'ws'
+    start = 'wss'
 }
 
 console.log(start)
