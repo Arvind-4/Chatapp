@@ -4,11 +4,11 @@
   "version": "0.1.0",
   "scripts": {
     "dev:server": "vite --port=3000",
-    "dev:tailwind": "tailwind build -i ./css/style.css -o ../public/css/tailwind.css --watch",
+    "dev:tailwind": "tailwind build -i ./src/css/style.css -o ../public/css/tailwind.css --watch",
     "dev": "npm-run-all --parallel dev:*",
     "build:server": "cross-env NODE_ENV=production vite build",
     "build:tailwind": "cross-env NODE_ENV=production postcss ./src/css/style.css -o ../public/css/tailwind.min.css --minify",
-    "build": "npm-run-all build:*",    
+    "build": "npm-run-all build:*",
     "make-dirs": "mkdir -p ../public/css ../public/js ",
     "remove-cache:pre": "rimraf ../public/js/*.js ../public/css/*.css ../dist-chat",
     "remove-cache:post": "rimraf ../dist-chat ./dist-chat",

@@ -12,7 +12,7 @@ if (window.location.protocol == 'https:') {
 }
 
 console.log(start)
-let endpoint = `${start}://${window.location.host}/${start}/${room_name}/`
+let endpoint = `${start}://${window.location.host}/ws/${room_name}/`
 console.log(endpoint)
 var chat_socket = new ReconnectingWebSocket(endpoint)
 
