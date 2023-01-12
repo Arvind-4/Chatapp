@@ -8,6 +8,8 @@ package-lock.json
 *.sqlite3
 logs
 poetry.lock
+apps/public/css
+apps/public/js
 *.log
 staticfiles_build/
 npm-debug.log*
