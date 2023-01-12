@@ -1,1 +1,5 @@
-web: sh -c 'cd web && daphne backend.asgi:application --port $PORT --bind 0.0.0.0'
+release: python manage.py migrate --noinput
+
+web: daphne -b 0.0.0.0 app:app 
+
+worker: python manage.py rqworker default
