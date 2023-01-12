@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: chatapp
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "daphne app:app -b 0.0.0.0"

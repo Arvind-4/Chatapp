@@ -1,14 +1,16 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -o errexit
 
 echo "Upgrade pip..."
-python3.9 -m pip install --upgrade pip
+python -m pip install --upgrade pip
 
 echo "Installing dependencies..."
-python3.9 -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 echo "Migrating database..."
-python3.9 manage.py makemigrations --noinput
-python3.9 manage.py migrate --noinput
+python manage.py makemigrations --noinput
+python manage.py migrate --noinput
 
 echo "Creating superuser..."
 
@@ -16,7 +18,7 @@ DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
 DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
 DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
 
-python3.9 manage.py createsuperuser \
+python manage.py createsuperuser \
     --email $DJANGO_SUPERUSER_EMAIL \
     --noinput || true
 
@@ -30,4 +32,4 @@ echo "Clear Cache..."
 rm -rf apps/chatjs
 
 echo "Collecting static files..."
-python3.9 manage.py collectstatic --noinput --clear
+python manage.py collectstatic --noinput --clear
