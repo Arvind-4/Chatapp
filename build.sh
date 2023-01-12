@@ -2,8 +2,6 @@
 
 set -o errexit
 
-python -m pip install --upgrade pip
-
 python -m pip install -r requirements.txt
 
 python manage.py makemigrations --noinput
@@ -18,5 +16,4 @@ python manage.py createsuperuser \
     --email $DJANGO_SUPERUSER_EMAIL \
     --noinput || true
 
-echo "Collecting static files..."
 python manage.py collectstatic --noinput --clear
