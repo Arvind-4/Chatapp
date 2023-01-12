@@ -21,7 +21,6 @@ def home(request):
             qs_user = ChatRoom.objects.get(name__iexact=room_name)
             room = qs_user.name
             op = qs_user.user.add(info)
-            print('The op is ', op)
         else:
             room = ChatRoom.objects.create(
                 name=room_name,
