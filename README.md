@@ -14,7 +14,7 @@ Real Time Chat App Using Django, Channels, JavaScript, Docker, Tailwind CSS and 
 - [Deploy](#deploy)
 - [Bug Reporting](#bug)
 - [Feature Request](#feature-request)
-- [Release Notes](#release-notes)
+- [Change Log](#change-logs)
 - [License](#license)
 
 <a id="features"></a>
@@ -164,7 +164,7 @@ Feel free to [open an issue](https://github.com/Arvind-4/Chatapp/issues) on GitH
 - Feel free to [Open an issue](https://github.com/Arvind-4/Chatapp/issues) on GitHub to request any additional features you might need for your use case.
 - Connect with me on [LinkedIn](https://www.linkedin.com/in/a-arvind/). I'd love ❤️️ to hear from you.
 
-<a id="release-notes"></a>
+<a id="change-logs"></a>
 
 ## 📋 Change Log:
 
