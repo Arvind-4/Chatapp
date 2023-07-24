@@ -1,12 +1,38 @@
 # Chat App
 
+ <p>   
+ <img src="https://img.shields.io/pypi/v/pybadges.svg" alt="pypi" />
+  <img src="https://img.shields.io/pypi/pyversions/pybadges.svg" alt="python versions" />
+ <img src="https://img.shields.io/npm/l/color-calendar?style=flat-square" alt="license" />
+</p>
+
 Real Time Chat App Using Django, Channels, JavaScript, Docker, Tailwind CSS and much more..
 
-This App is Deployed to [Render](https://render.com). <br/>
-[Live Preview](https://chatapp-2.onrender.com/).
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Deploy](#deploy)
+- [Bug Reporting](#bug)
+- [Feature Request](#feature-request)
+- [Release Notes](#release-notes)
+- [License](#license)
 
-## Tech Stack:
+<a id="features"></a>
 
+## 🚀 Features:
+
+-  **Real-time messaging**: The app allows users to send and receive messages in real-time, providing a seamless chatting experience.
+-  **Django and Channels**: The app is built using the Django web framework and Channels, which extends Django to handle WebSockets and other asynchronous protocols.
+- **JavaScript**: The app uses JavaScript to provide a dynamic and interactive user interface.
+-  **Docker**: The app can be containerised using Docker, making it easy to deploy and manage.
+-  **Tailwind CSS**: The app uses Tailwind CSS, a utility-first CSS framework, to style the user interface.
+
+Is there anything else you would like to know about this chat app?
+- [Request more features](#feature-request)...
+
+<a id="tech-stack"></a>
+
+##  📦 Tech Stack:
 - [WebSockets](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) - WebSocket is a computer communications protocol, providing full-duplex communication channels over a single TCP connection.
 - [Django](https://www.djangoproject.com/) - Django makes it easier to build better web apps more quickly and with less code.
 - [Django Channels](https://channels.readthedocs.io/en/stable/) - Channels is a project that takes Django and extends its abilities beyond HTTP - to handle WebSockets, chat protocols, IoT protocols, and more.
@@ -15,7 +41,13 @@ This App is Deployed to [Render](https://render.com). <br/>
 - [Docker](https://www.docker.com/) - Docker is a platform designed to help developers build, share, and run modern applications. We handle the tedious setup, so you can focus on the code.
 - [Postgres DB](https://www.postgresql.org/) - The World's Most Advanced Open Source Relational Database.
 
-## Getting Started
+
+
+
+<a id="getting-started"></a>
+
+## 📦 Getting Started:
+
 
 1. Clone the project and make it your own.
 ```bash
@@ -39,7 +71,7 @@ $(Chatapp) python -m pip install pip --upgrade
 $(Chatapp) python -m pip install -r requirements.txt
 ```
 
-4. Open VSCode
+4. Open VS Code
 ```bash
 code .
 ```
@@ -100,26 +132,46 @@ Run the server:
 $(Chatapp) python manage.py runserver
 ```
 
-8. Install & Build the Frontend.
+8. Install & Build the Front end.
 
 Install the Required Dependencies
 ```bash
 npm run i
 ```
-Build the Frontend for Production
+Build the Front end for Production
 ```bash
 npm run production
 ```
 
-9. Celebrate!
+<a id="deploy"></a>
 
-## Deploy to Render:
+## 🚀 Deploy:
+
 Click the Button to Deploy to [Render](https://render.com/).
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Arvind-4/Chatapp)
 
-## Change Log:
-[Change Log](https://github.com/Arvind-4/Chatapp/commits/main).
+<a id="bug"></a>
 
-## License:
-This Project is [MIT LICENSE](https://github.com/Arvind-4/Chatapp/blob/main/LICENSE).
+## 🐛 Bug Reporting
+
+Feel free to [open an issue](https://github.com/Arvind-4/Chatapp/issues) on GitHub if you find any bug.
+
+<a id="feature-request"></a>
+
+## ⭐ Feature Request
+
+- Feel free to [Open an issue](https://github.com/Arvind-4/Chatapp/issues) on GitHub to request any additional features you might need for your use case.
+- Connect with me on [LinkedIn](https://www.linkedin.com/in/a-arvind/). I'd love ❤️️ to hear from you.
+
+<a id="release-notes"></a>
+
+## 📋 Change Log:
+
+Check [here](https://github.com/Arvind-4/Chatapp/commits/main) for change logs.
+
+<a id="license"></a>
+
+## 📜 License
+
+This software is open source, licensed under the [MIT License](https://github.com/Arvind-4/Chatapp/blob/main/LICENSE).
