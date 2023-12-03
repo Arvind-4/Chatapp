@@ -1,4 +1,3 @@
-import pathlib
 from decouple import config
 
 DJANGO_PG_PASSWORD = config('DJANGO_PG_PASSWORD', cast=str)
@@ -16,6 +15,7 @@ DB_IS_AVAILABLE = all([
 ])
 
 if DB_IS_AVAILABLE:
+    print("Database is available.")
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
