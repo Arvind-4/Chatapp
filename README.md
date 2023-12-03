@@ -1,3 +1,4 @@
+
 # Chat App
 
  <p>   
@@ -9,6 +10,7 @@
 Real Time Chat App Using Django, Channels, JavaScript, Docker, Tailwind CSS and much more..
 
 - [Features](#features)
+- [Screenshots](#screenshots)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Deploy](#deploy)
@@ -29,6 +31,15 @@ Real Time Chat App Using Django, Channels, JavaScript, Docker, Tailwind CSS and 
 
 Is there anything else you would like to know about this chat app?
 - [Request more features](#feature-request)...
+
+<a id="screenshots"></a>
+
+### 📸 Screenshots:
+<div align="center">
+<img src=".github/static/homepage.png" alt="Home Page" />
+    <br />
+<img src=".github/static/chatpage.png" alt="Chat Page" />
+</div>
 
 <a id="tech-stack"></a>
 
@@ -80,42 +91,56 @@ code .
 
 Add Your Credentials `.env` from `.env.sample`:
 ```
-DJANGO_PG_PASSWORD=postgres
-DJANGO_PG_HOST=localhost
-DJANGO_PG_USER=postgres
-DJANGO_PG_DATABASE=postgres
+PYTHON_VERSION=
+
+DJANGO_PG_PASSWORD=iz-MAIesYif5c8d53pEnAg
+DJANGO_PG_HOST=db
+DJANGO_PG_USER=admin
+DJANGO_PG_DATABASE=chatdb
 DJANGO_PG_PORT=5432
 
-DJANGO_REDIS_URL=redis://localhost:6379
+DJANGO_REDIS_HOST=redis
+DJANGO_REDIS_PORT=6379
 
-DJANGO_SUPERUSER_EMAIL=arvind@host.com
+DJANGO_SUPERUSER_EMAIL=
 DJANGO_SUPERUSER_USERNAME=admin
-DJANGO_SUPERUSER_PASSWORD=bad-password
+DJANGO_SUPERUSER_PASSWORD=-_cYnxeqvWQKhCUe_AJn8Q
 
-DJANGO_SECRET_KEY=
+DJANGO_SECRET_KEY=P_wXmuyfulz3qZTe3bAmRw5d0-9maJ5PIIVDMjMIm1gw
 DJANGO_ADMIN_URL=admin/
 DJANGO_DEBUG=1
 DJANGO_ALLOWED_HOSTS=*
-
+DJANGO_REDIS_AVAILABLE=0
+DJANGO_HTTPS_SECURITY=0
 DJANGO_LIVE=0
 
-PYTHON_VERSION=3.9.14
+POSTGRES_PASSWORD=iz-MAIesYif5c8d53pEnAg
+POSTGRES_USER=admin
+POSTGRES_DB=chatdb
 ```
 Replace your `SECRET_KEY` with a new one using the code Below.
 
 ```bash
 python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
 ```
+<p align="center">
+	Or
+</p>
+
+
+```bash
+bash commands/secret.sh
+```
 
 6. Build and Start the Docker File:
 
 Below will start a Docker Instance on your local machine to match the `.env` from the previous step.
 ```bash
-docker build -t chatapp:v1 .
+docker compose -f docker-compose.selfhost.yaml build
 ```
 Start the Docker Build Image:
 ```bash
-docker run -it -p 8000:8000 chatapp:v1
+docker compose -f docker-compose.selfhost.yaml up
 ```
 
 7. Run Django Commands & Migrations and Create Superuser
@@ -136,7 +161,7 @@ $(Chatapp) python manage.py runserver
 
 Install the Required Dependencies
 ```bash
-npm run i
+npm run bootstrap
 ```
 Build the Front end for Production
 ```bash
@@ -150,6 +175,12 @@ npm run production
 Click the Button to Deploy to [Render](https://render.com/).
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/Arvind-4/Chatapp)
+
+<p align="center">
+    OR
+</p>
+
+Self Host using Docker, Docker Compose in a VM :)
 
 <a id="bug"></a>
 
