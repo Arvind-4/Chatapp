@@ -1,1 +1,5 @@
-gunicorn --bind 0.0.0.0:8000 app:app -w 4 -k uvicorn.workers.UvicornWorker
+#!/bin/bash
+
+echo "Starting server..."
+APP_PORT=${PORT:-8000}
+/opt/venv/bin/daphne -b 0.0.0.0 -p ${APP_PORT} app:app
