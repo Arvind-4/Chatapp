@@ -1,8 +1,7 @@
-python
 Django;
 channels;
 Pillow;
 whitenoise;
 channels-redis;
 psycopg2-binary;
-python-decouple
+python-decouple;
