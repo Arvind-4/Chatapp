@@ -1,0 +1,38 @@
+services:
+  server:
+    container_name: server
+    build: 
+      context: .
+      dockerfile: ./docker/compose/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+      - redis
+    develop:
+      watch:
+      - action: rebuild
+        path: ./apps
+        target: ./apps
+
+  db:
+    container_name: postgres
+    image: postgres:13.1-alpine
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./.env
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  redis:
+    container_name: redis
+    restart: always
+    image: redis:7.0.5-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres-data:

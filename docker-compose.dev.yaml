@@ -1,0 +1,10 @@
+services:
+  server:
+    container_name: server
+    build: 
+      context: .
+      dockerfile: ./docker/standalone/Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./.env
